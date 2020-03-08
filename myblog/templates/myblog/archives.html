@@ -1,0 +1,49 @@
+{% extends 'myblog/base.html' %}
+{% load staticfiles %}
+{% block child %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ year}}-{{ month }}-归档</title>
+	<link rel="stylesheet" href="{% static 'css/category.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/page.css' %}">
+</head>
+<body>
+<div class="main-container">
+	<!-- 头部图片标题部分 -->
+	<div class="background-img">
+		<div class="cover"></div>
+		<div class="nav">
+			<div class="nav-item">
+                <a href="/index">首页</a>
+                {% for category in categorys %}
+				<a href="{% url "category" id=category.id pindex=1%}">{{ category.name }}</a>
+                {% endfor %}
+			</div>
+		</div>
+		<div class="category-title">1
+			<h1>{{ year }}/{{ month }}</h1>
+		</div>
+		<div class="modified-time">
+			<p><span>本分类共有{{ num_of_posts }}篇文章</span> </p>
+		</div>
+	</div>
+</div>
+{% endblock child %}
+{% block page %}
+    <div class="page-container">
+    {% if page.has_previous %}
+        <a href="{% url "archives" year=year month=month pindex=page.previous_page_number %}">上一页</a>
+    {% else %}
+        <a href="#" class="empty">上一页</a>
+    {% endif %}
+        第{{ page.number }}页&nbsp;&nbsp;
+        共{{ sum }}页
+    {% if page.has_next %}
+        <a href="{% url "archives" year=year month=month pindex=page.next_page_number %}">下一页</a>
+    {% else %}
+        <a href="#" class="empty">下一页</a>
+    {% endif %}
+    </div>
+{% endblock page %}

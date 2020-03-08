@@ -1,0 +1,55 @@
+{% extends 'myblog/base.html' %}
+{% block child %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>博客首页</title>
+	<link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/page.css">
+    <link rel="stylesheet" href="./static/css/base.css">
+    <script type="text/javascript" src="./static/js/index.js"></script>
+</head>
+<body>
+<div class="background-color">
+<div class="background-img">
+<div class="cover"></div>
+<header class="header">
+	<div class="media_box">
+		<a><img src="./static/img/wechat.svg"/ class="icon wx"></a>
+		<a><img src="./static/img/bilibili.svg"/ class="icon bilibili"></a>
+	</div>
+	<div class="nav">
+        {% for category in categorys %}
+		<a href="{% url "category" id=category.id pindex=1 %}">{{ category.name }}</a>
+        {% endfor %}
+	</div>
+</header>
+<!-- 微信二维码 -->
+<div class="wx-code">
+	<img src="./static/img/wxcode.JPG" />
+</div>
+	<div class="head">
+	<div class="title">
+		<h1>紫荆之巅的技术园</h1>
+		<p>这是一段说明</p>
+	</div>
+</div>
+</div>
+</div>
+{% endblock child %}
+{% block page %}
+    <div class="page-container">
+    {% if page.has_previous %}
+        <a href="/index{{ page.previous_page_number }}">上一页</a>
+    {% else %}
+        <a href="#" class="empty">上一页</a>
+    {% endif %}
+        第{{ page.number }}页&nbsp;&nbsp;
+        共{{ sum }}页
+    {% if page.has_next %}
+        <a href="/index{{ page.next_page_number }}">下一页</a>
+    {% else %}
+        <a href="#" class="empty">下一页</a>
+    {% endif %}
+    </div>
+{% endblock page %}

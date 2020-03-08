@@ -1,0 +1,8 @@
+Django==1.8.2
+django-mdeditor==0.1.17
+Markdown==3.2.1
+mysqlclient==1.4.6
+Pillow==7.0.0
+Pygments==2.5.2
+PyMySQL==0.9.3
+pytz==2019.3

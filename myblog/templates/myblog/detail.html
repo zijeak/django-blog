@@ -1,0 +1,70 @@
+{% load staticfiles %}
+{% load blog_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ post.title }}</title>
+	<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tango.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<div class="main-container">
+	<!-- 头部图片标题部分 -->
+	<div class="background-img">
+		<div class="cover"></div>
+		<div class="nav">
+			<div class="nav-item">
+                <a href="/index">首页</a>
+                {% for category in categorys %}
+				<a href="{% url "category" id=category.id pindex=1 %}">{{ category.name }}</a>
+                {% endfor %}
+			</div>
+		</div>
+		<div class="title">
+			<h1>{{ post.title|slice:":30"}}</h1>
+		</div>
+		<div class="modified-time">
+			<p><span>{{ post.user }}</span> 更新于 {{ post.modified_time }}</p>
+		</div>
+	</div>
+	<!-- 文章部分 -->
+	<div class="container">
+		<div class="article">
+			<div class="tags">
+                {% for tag in post.tags.all %}
+                    <span><a href="#">{{ tag.name }}</a></span>
+                {% endfor %}
+			</div>
+            {{ post.content|safe }}
+		</div>
+		<aside>
+			<div class="archives">
+				<span>文章归档</span>
+                {% for date in dates %}
+				<a href="{% url 'archives' year=date.year month=date.month pindex=1 %}">{{ date.year }} 年 {{ date.month }} 月</a>
+                {% empty %}
+                暂无文章！
+                {% endfor %}
+			</div>
+			<div class="newest">
+				<span>最新文章</span>
+                {% for recent_post in recent_posts %}
+                    <a href="{% url "detail" recent_post.id %}">{{ recent_post.title }}</a>
+                {% empty %}
+                暂无文章！
+                {% endfor %}
+			</div>
+		</aside>
+	</div>
+</div>
+<footer class="footer">
+	<div class="copyright">
+		<a href="https://github.com/zijeak" target="_blank"><img src="{% static 'img/github.png' %}"/ class="icon"></a>
+		<a href="https://blog.csdn.net/qq_18404993" target="_blank"><img src="{% static 'img/csdn.png' %}"/ class="icon"></a>
+		<a href="https://zijeak.cnblogs.com/" target="_blank"><img src="{% static 'img/cnblog.png' %}"/ class="icon"></a>
+	    <p>关于我 | Powered by Django | 陕ICP备18049062号-1 | Copyright© 2019-2020 Zijeak</p>
+	</div>
+</footer>
+</body>
+</html>
