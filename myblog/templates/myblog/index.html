@@ -1,13 +1,14 @@
 {% extends 'myblog/base.html' %}
+{% load static %}
 {% block child %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>博客首页</title>
-	<link rel="stylesheet" href="./static/css/index.css">
-    <link rel="stylesheet" href="./static/css/page.css">
-    <link rel="stylesheet" href="./static/css/base.css">
-    <script type="text/javascript" src="./static/js/index.js"></script>
+	<link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 </head>
 <body>
 <div class="background-color">
@@ -15,8 +16,8 @@
 <div class="cover"></div>
 <header class="header">
 	<div class="media_box">
-		<a><img src="./static/img/wechat.svg"/ class="icon wx"></a>
-		<a><img src="./static/img/bilibili.svg"/ class="icon bilibili"></a>
+		<a><img src="{% static 'img/wechat.svg' %}" class="icon wx"></a>
+		<a><img src="{% static 'img/bilibili.svg' %}" class="icon bilibili"></a>
 	</div>
 	<div class="nav">
         {% for category in categorys %}
@@ -26,7 +27,7 @@
 </header>
 <!-- 微信二维码 -->
 <div class="wx-code">
-	<img src="./static/img/wxcode.JPG" />
+	<img src="{% static 'img/wxcode.JPG' %}" />
 </div>
 	<div class="head">
 	<div class="title">
