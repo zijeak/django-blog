@@ -16,7 +16,7 @@
 		<div class="cover"></div>
 		<div class="nav">
 			<div class="nav-item">
-                <a href="/index">首页</a>
+                <a href="/">首页</a>
                 {% for category in categorys %}
 				<a href="{% url "category" id=category.id pindex=1%}">{{ category.name }}</a>
                 {% endfor %}
