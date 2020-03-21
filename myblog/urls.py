@@ -2,7 +2,7 @@ from django.conf.urls import include, url
 from myblog import views
 
 urlpatterns = [
-    url(r'^index(?P<pindex>\d*)$', views.index),
+    url(r'^(?P<pindex>\d*)$', views.index),
     url(r'^post/(?P<id>[0-9]+)/$', views.detail, name='detail'),
     url(r'^category/(?P<id>[0-9]+)/(?P<pindex>\d*)$', views.category, name='category'),
 
