@@ -1,11 +1,7 @@
 {% load staticfiles %}
-@font-face {
-	font-family: 'pingFangSC-Regular';
-	src: url("../font/苹方字体.ttf");
-	font-style: normal;
-}
 body{
-	font-family: 'pingFangSC-Regular';
+	font-family: 'Noto Sans SC', sans-serif;
+	/*font-family: 'pingFangSC-Regular';*/
 }
 
 /*文章列表*/

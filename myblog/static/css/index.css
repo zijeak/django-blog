@@ -6,7 +6,7 @@
 		width:100%;
 		/*position: relative;*/
 		background-color: #EEEEEE;
-		font-family: 'pingFangSC-Regular';
+		font-family: 'Noto Sans SC', sans-serif;
 	}
 	a{
 		text-display: none;
